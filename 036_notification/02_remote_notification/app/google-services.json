@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "162435142441",
+    "project_id": "remote-notification-example",
+    "storage_bucket": "remote-notification-example.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162435142441:android:56fb4d6ac0f2ecb5df9d38",
+        "android_client_info": {
+          "package_name": "com.yologger.remote_notification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "162435142441-ctovc3jnquls3dm8m0u3gh817ivsloli.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsKMXt378xPAQRHUXEFlOrE6066TonV30"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "162435142441-ctovc3jnquls3dm8m0u3gh817ivsloli.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

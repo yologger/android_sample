@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.yologger.test_consumable.mobile",
+  "variantName": "mobileRelease",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "versionCode": 28,
+      "versionName": "0.0.28-mobile",
+      "outputFile": "app-mobile-release.apk"
+    }
+  ]
+}

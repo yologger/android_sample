@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioGroup
+            android:id="@+id/activity_main_rg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/activity_main_rb_select_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="전체 체크"
+                tools:layout_editor_absoluteX="40dp"
+                tools:layout_editor_absoluteY="87dp" />
+
+            <RadioButton
+                android:id="@+id/activity_main_rb_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="전체 체크 해제"
+                tools:layout_editor_absoluteX="40dp"
+                tools:layout_editor_absoluteY="87dp" />
+
+            <RadioButton
+                android:id="@+id/activity_main_rb_select_partially"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="일부 체크"
+                tools:layout_editor_absoluteX="40dp"
+                tools:layout_editor_absoluteY="87dp" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:id="@+id/activity_main_cb_option1"
+            android:text="Option 1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <CheckBox
+            android:id="@+id/activity_main_cb_option2"
+            android:text="Option 2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <CheckBox
+            android:id="@+id/activity_main_cb_option3"
+            android:text="Option 3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</LinearLayout>

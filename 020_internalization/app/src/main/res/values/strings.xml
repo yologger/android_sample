@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Test App</string>
+    <string name="textview_welcome">Welcome</string>
+    <string name="button_login">Log in</string>
+</resources>

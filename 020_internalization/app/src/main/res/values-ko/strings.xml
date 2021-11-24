@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">테스트 앱</string>
+    <string name="textview_welcome">반갑습니다</string>
+    <string name="button_login">로그인</string>
+</resources>

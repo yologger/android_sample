@@ -1,0 +1,2 @@
+rootProject.name = "inapp_billing_subscription"
+include ':app'

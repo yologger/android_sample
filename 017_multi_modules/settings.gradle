@@ -1,0 +1,6 @@
+include ':app2'
+include ':myModi'
+include ':mylibrary'
+include ':app:mylibrary'
+include ':app'
+rootProject.name = "multi_module"

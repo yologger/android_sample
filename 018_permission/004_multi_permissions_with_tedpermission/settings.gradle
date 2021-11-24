@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "multi_permissions_with_tedpermission"
