@@ -10,6 +10,6 @@ class MainViewModel: ViewModel() {
     val livePassword: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
 
     fun login() {
-        Log.d("KKK", "${liveEmail.value} and ${livePassword.value}")
+        Log.d("KKK", "Nice to meet you")
     }
 }
