@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/view_post_iv_avatar"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/avatar1"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/view_post_tv_writer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/view_post_iv_avatar"
+            android:layout_marginLeft="16dp"
+            android:text="Leonel Messi"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:padding="16dp"
+        android:id="@+id/view_post_tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello. My name is Leonel Messi. Nice to meet you. I'm from Argentina. I'm working at F.C. Barcelona. "/>
+
+</LinearLayout>

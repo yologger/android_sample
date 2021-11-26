@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.yologger.project.PostView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:avatarSrc="@drawable/avatar1"
+        app:writerText="Paul"
+        app:contentText="Hello. My name is Paul. Nice to meet you."/>
+
+</LinearLayout>
