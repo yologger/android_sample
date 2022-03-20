@@ -1,9 +1,6 @@
 package com.yologger.project
 
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
+import android.graphics.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -24,9 +21,19 @@ class MainActivity : AppCompatActivity() {
 
         val paint = Paint().apply {
             color = Color.BLUE
-            strokeWidth = 30F
+            strokeWidth = 5F
         }
 
-        canvas.drawArc(100F, 100F, 300F, 300F, 0F, 360F, true, paint)
+//        val path = Path().apply {
+//            // 시작점 설정
+//            moveTo(100F, 100F)
+//
+//            // 경로 이동
+//            lineTo(100F, 500F)
+//            lineTo(500F, 300F)
+//        }
+//
+//        canvas.drawPath(path, paint)
+
     }
 }
