@@ -1,6 +1,5 @@
 package com.yologger.app.data.repository
 
-import androidx.lifecycle.Transformations.map
 import com.google.gson.Gson
 import com.yologger.app.data.api.ErrorResponse
 import com.yologger.app.data.api.auth.AuthApi
@@ -11,9 +10,7 @@ import com.yologger.app.domain.login.LoginError
 import com.yologger.app.domain.login.LoginResult
 import com.yologger.app.domain.repository.AuthRepository
 import io.reactivex.rxjava3.core.Observable
-import okhttp3.ResponseBody
 import retrofit2.HttpException
-import retrofit2.Retrofit
 import java.net.ConnectException
 import javax.inject.Inject
 
