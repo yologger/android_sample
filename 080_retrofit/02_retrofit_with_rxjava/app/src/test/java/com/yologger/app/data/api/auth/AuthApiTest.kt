@@ -1,10 +1,9 @@
-package com.yologger.app.api.auth
+package com.yologger.app.data.api.auth
 
 import com.google.common.truth.Truth.assertThat
 import com.google.gson.Gson
 import com.google.gson.JsonObject
-import io.reactivex.rxjava3.observers.TestObserver
-import io.reactivex.rxjava3.subscribers.TestSubscriber
+import io.reactivex.rxjava3.core.Observable
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
@@ -13,7 +12,6 @@ import org.junit.After
 import org.junit.Assert.fail
 import org.junit.Before
 import org.junit.Test
-import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -129,14 +127,9 @@ class AuthApiTest {
         val request = LoginRequest("paul@gmail.com", "1234")
 
         authApi.login(request)
-            .blockingSubscribe({response ->
-                fail()
-            }, { error ->
-                if (error is HttpException) {
-                    assertThat(error.code()).isEqualTo(HttpURLConnection.HTTP_BAD_REQUEST)
-                } else {
-                    fail()
-                }
-            })
+            .onErrorResumeNext { e -> Observable.error(Error("w")) }
+            .subscribe({
+
+            }) {}
     }
 }

@@ -1,14 +1,11 @@
-package com.yologger.app.ui
+package com.yologger.app.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.yologger.app.R
-import com.yologger.app.api.auth.AuthApi
-import com.yologger.app.api.auth.LoginRequest
-import io.reactivex.rxjava3.kotlin.addTo
-import okhttp3.Connection
+import com.yologger.app.data.api.auth.AuthApi
+import com.yologger.app.data.api.auth.LoginRequest
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import retrofit2.HttpException
@@ -46,6 +43,9 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             val request = LoginRequest("paul@gmail.com", "1234")
             authApi.login(request)
+                .doOnError { error ->
+
+                }
                 .subscribe({ response ->
                     println(response)
                 }, { error ->

@@ -1,4 +1,4 @@
-package com.yologger.app.ui
+package com.yologger.app.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
