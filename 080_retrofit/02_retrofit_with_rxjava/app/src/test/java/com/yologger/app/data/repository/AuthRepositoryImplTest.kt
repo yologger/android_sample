@@ -62,7 +62,7 @@ class AuthRepositoryImplTest {
         // Given
         val dummyUserId: Long = 1
         val dummyAccessToken = "dummy_access_token"
-        val dummyRefreshToken = "dummy_refres_token"
+        val dummyRefreshToken = "dummy_refresh_token"
 
         // Create mock response
         val successResponse by lazy {
