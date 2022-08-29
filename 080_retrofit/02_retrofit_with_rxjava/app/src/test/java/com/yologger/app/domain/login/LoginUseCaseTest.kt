@@ -1,5 +1,6 @@
 package com.yologger.app.domain.login
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.yologger.app.domain.repository.AuthRepository
 import com.yologger.app.scheduler.TrampolineSchedulerRule
 import io.reactivex.rxjava3.core.Observable
