@@ -10,6 +10,7 @@ import com.yologger.app.R
 import com.yologger.app.databinding.ActivityLoginBinding
 import com.yologger.app.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
+import org.jetbrains.annotations.TestOnly
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
