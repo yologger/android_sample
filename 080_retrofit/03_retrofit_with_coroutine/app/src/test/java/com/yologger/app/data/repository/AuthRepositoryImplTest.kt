@@ -4,8 +4,10 @@ import com.google.common.truth.Truth.assertThat
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.yologger.app.data.api.auth.AuthApi
+import com.yologger.app.domain.login.LoginError
 import com.yologger.app.domain.login.LoginResult
 import com.yologger.app.domain.repository.AuthRepository
+import kotlinx.coroutines.runBlocking
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
@@ -14,7 +16,6 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.net.HttpURLConnection
 
@@ -44,7 +45,6 @@ class AuthRepositoryImplTest {
             .client(client)
             .baseUrl(mockUrl)
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
             .create(AuthApi::class.java)
 
@@ -53,12 +53,11 @@ class AuthRepositoryImplTest {
 
     @After
     fun tearDown() {
-        // Shut down MockWebServer
         mockServer.shutdown()
     }
 
     @Test
-    fun `로그인 성공 테스트`() {
+    fun `로그인 성공 테스트`() = runBlocking {
         // Given
         val dummyUserId: Long = 1
         val dummyAccessToken = "dummy_access_token"
@@ -89,11 +88,44 @@ class AuthRepositoryImplTest {
         val dummyEmail = "ronaldo@gmail.com"
         val dummyPassword = "12341234"
 
-        authRepository.login(dummyEmail, dummyPassword)
-            .blockingSubscribe { result ->
-                assertThat(result is LoginResult.SUCCESS).isTrue()
-                assertThat((result as LoginResult.SUCCESS).data.accessToken).isEqualTo(dummyAccessToken)
-                assertThat((result as LoginResult.SUCCESS).data.refreshToken).isEqualTo(dummyRefreshToken)
+        val result = authRepository.login(dummyEmail, dummyPassword)
+        assertThat(result is LoginResult.Success).isTrue()
+        assertThat((result as LoginResult.Success).data.accessToken).isEqualTo(dummyAccessToken)
+        assertThat((result as LoginResult.Success).data.refreshToken).isEqualTo(dummyRefreshToken)
+    }
+
+    @Test
+    fun `로그인 실패 테스트 - 잘못된 이메일`() = runBlocking {
+
+        // Given
+        val code = "AUTH_00"
+        val message = "Invalid Email"
+
+        // Create mock response
+        val failureResponse by lazy {
+            MockResponse().apply {
+
+                val jsonObject = JsonObject()
+                jsonObject.addProperty("code", code)
+                jsonObject.addProperty("message", message)
+
+                val gson = Gson()
+                val jsonString = gson.toJson(jsonObject)
+
+                addHeader("Content-Type", "application/json")
+                setResponseCode(HttpURLConnection.HTTP_BAD_REQUEST)
+                setBody(jsonString)
             }
+        }
+
+        // Add response to mock server
+        mockServer.enqueue(failureResponse)
+
+        val dummyEmail = "ronaldo@gmail.com"
+        val dummyPassword = "12341234"
+
+        val result = authRepository.login(dummyEmail, dummyPassword)
+        assertThat(result is LoginResult.Failure).isTrue()
+        assertThat((result as LoginResult.Failure).error).isEqualTo(LoginError.INVALID_EMAIL)
     }
 }

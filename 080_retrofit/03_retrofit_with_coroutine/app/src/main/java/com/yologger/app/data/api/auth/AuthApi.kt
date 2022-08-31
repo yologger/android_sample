@@ -1,4 +1,4 @@
-package com.yologger.app.api.auth
+package com.yologger.app.data.api.auth
 
 import retrofit2.http.Body
 import retrofit2.http.POST

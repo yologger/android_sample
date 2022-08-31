@@ -7,7 +7,7 @@ import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement
 
-class TrampolineSchedulerRule : TestRule {
+class RxSchedulerRule : TestRule {
     private val scheduler by lazy { Schedulers.trampoline() }
     override fun apply(base: Statement?, description: Description?): Statement =
         object : Statement() {

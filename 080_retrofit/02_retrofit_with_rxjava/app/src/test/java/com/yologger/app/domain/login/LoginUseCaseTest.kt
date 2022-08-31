@@ -1,8 +1,7 @@
 package com.yologger.app.domain.login
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.yologger.app.domain.repository.AuthRepository
-import com.yologger.app.scheduler.TrampolineSchedulerRule
+import com.yologger.app.scheduler.RxSchedulerRule
 import io.reactivex.rxjava3.core.Observable
 import org.junit.Before
 import org.junit.Rule
@@ -20,7 +19,7 @@ class LoginUseCaseTest {
     lateinit var loginUseCase: LoginUseCase
 
     @get:Rule
-    val rule = TrampolineSchedulerRule()
+    val rule = RxSchedulerRule()
 
     @Before
     fun setUp() {

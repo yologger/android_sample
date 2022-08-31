@@ -43,6 +43,7 @@ class MainActivityTest {
     @Test
     fun test() {
         `when`(mainViewModel.buttonText).thenReturn("BEFORE")
+        `when`(mainViewModel.getText()).thenReturn("BEFORE")
 
         activityController = Robolectric.buildActivity(MainActivity::class.java)
         activityController
@@ -56,7 +57,8 @@ class MainActivityTest {
             val field = activity::class.java.getDeclaredField("binding")
             field.isAccessible = true
             binding = field.get(activity) as ActivityMainBinding
-
+            
+            assertThat(activity.mockingViewModelTest()).isEqualTo("BEFORE")
             assertThat(mainViewModel.buttonText).isEqualTo("BEFORE")
             assertThat(binding.button.text).isEqualTo("LOG IN")
 

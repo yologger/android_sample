@@ -9,4 +9,6 @@ class MainViewModel @Inject constructor(
 
 ): BaseViewModel() {
     var buttonText = "clicked"
+
+    fun getText() = this.buttonText
 }

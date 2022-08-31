@@ -1,4 +1,4 @@
-package com.yologger.app.api.auth
+package com.yologger.app.data.api.auth
 
 import com.google.common.truth.Truth.assertThat
 import com.google.gson.Gson

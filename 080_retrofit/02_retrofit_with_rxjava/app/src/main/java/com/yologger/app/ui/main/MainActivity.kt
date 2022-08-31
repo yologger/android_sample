@@ -28,4 +28,6 @@ class MainActivity : AppCompatActivity() {
             binding.button.text = viewModel.buttonText
         }
     }
+
+    fun mockingViewModelTest(): String = viewModel.buttonText
 }

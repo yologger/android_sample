@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.yologger.app.R
-import com.yologger.app.api.auth.AuthApi
-import com.yologger.app.api.auth.LoginRequest
-import com.yologger.app.api.auth.LoginResponse
+import com.yologger.app.data.api.auth.AuthApi
+import com.yologger.app.data.api.auth.LoginRequest
+import com.yologger.app.data.api.auth.LoginResponse
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
