@@ -49,4 +49,24 @@ class LoginUseCaseTest {
             .assertValue { result -> (result as LoginResult.SUCCESS).data.accessToken == dummyAccessToken }
             .assertValue { result -> (result as LoginResult.SUCCESS).data.refreshToken == dummyRefreshToken }
     }
+
+    @Test
+    fun `로그인 실패 테스트 - 비밀번호 실패`() {
+        // Given
+        val dummyEmail = "dummy@gmail.com"
+        val dummyPassword = "password"
+        val dummyAccessToken = "access_token"
+        val dummyRefreshToken = "refresh_token"
+        val dummyLoginResult = LoginResult.FAILURE(LoginError.INVALID_EMAIL)
+
+        // When
+        `when`(authRepository.login(anyString(), anyString())).thenReturn(Observable.just(dummyLoginResult))
+
+        // Then
+        val params = LoginUseCase.Params(email = dummyEmail, password = dummyPassword)
+        loginUseCase.execute(params)
+            .test()
+            .assertNoErrors()
+            .assertValue { result -> result is LoginResult.FAILURE }
+    }
 }
