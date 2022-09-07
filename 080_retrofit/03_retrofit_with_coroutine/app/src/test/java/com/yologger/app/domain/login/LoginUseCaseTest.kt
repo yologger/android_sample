@@ -67,4 +67,25 @@ class LoginUseCaseTest {
         assertThat(result is LoginResult.Failure).isTrue()
         assertThat((result as LoginResult.Failure).error).isEqualTo(LoginError.INVALID_EMAIL);
     }
+
+    @Test
+    fun `로그인 실패 테스트 - 잘못된 비밀번호`() = runBlocking {
+        // Given
+        val dummyEmail = "dummy@gmail.com"
+        val dummyPassword = "password"
+        val dummyAccessToken = "access_token"
+        val dummyRefreshToken = "refresh_token"
+        val dummyLoginData = LoginData(accessToken = dummyAccessToken, refreshToken = dummyRefreshToken)
+        val dummyLoginResult = LoginResult.Failure(LoginError.INVALID_PASSWORD)
+
+        // When
+        Mockito.`when`(authRepository.login(anyString(), anyString())).thenReturn(dummyLoginResult)
+
+        // Then
+        val params = LoginUseCase.Params(email = dummyEmail, password = dummyPassword)
+        val result = loginUseCase.execute(params)
+
+        assertThat(result is LoginResult.Failure).isTrue()
+        assertThat((result as LoginResult.Failure).error).isEqualTo(LoginError.INVALID_PASSWORD);
+    }
 }
