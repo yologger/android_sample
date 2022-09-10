@@ -128,4 +128,39 @@ class AuthRepositoryImplTest {
         assertThat(result is LoginResult.Failure).isTrue()
         assertThat((result as LoginResult.Failure).error).isEqualTo(LoginError.INVALID_EMAIL)
     }
+
+    @Test
+    fun `로그인 실패 테스트 - 잘못된 비밀번호`() = runBlocking {
+
+        // Given
+        val code = "AUTH_01"
+        val message = "Invalid Password"
+
+        // Create mock response
+        val failureResponse by lazy {
+            MockResponse().apply {
+
+                val jsonObject = JsonObject()
+                jsonObject.addProperty("code", code)
+                jsonObject.addProperty("message", message)
+
+                val gson = Gson()
+                val jsonString = gson.toJson(jsonObject)
+
+                addHeader("Content-Type", "application/json")
+                setResponseCode(HttpURLConnection.HTTP_BAD_REQUEST)
+                setBody(jsonString)
+            }
+        }
+
+        // Add response to mock server
+        mockServer.enqueue(failureResponse)
+
+        val dummyEmail = "ronaldo@gmail.com"
+        val dummyPassword = "12341234"
+
+        val result = authRepository.login(dummyEmail, dummyPassword)
+        assertThat(result is LoginResult.Failure).isTrue()
+        assertThat((result as LoginResult.Failure).error).isEqualTo(LoginError.INVALID_PASSWORD)
+    }
 }

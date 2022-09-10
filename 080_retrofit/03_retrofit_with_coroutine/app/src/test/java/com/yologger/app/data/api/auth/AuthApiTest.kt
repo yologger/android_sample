@@ -91,7 +91,7 @@ class AuthApiTest {
     }
 
     @Test
-    fun `로그인 실패 테스트`() = runBlocking {
+    fun `로그인 실패 테스트 - 잘못된 요청`() = runBlocking {
         // Given
         val dummyMessage = "fail"
 
