@@ -1,5 +1,6 @@
 package com.yologger.app.domain.login
 
+import com.google.common.truth.Truth.assertThat
 import com.yologger.app.domain.repository.AuthRepository
 import com.yologger.app.scheduler.RxSchedulerRule
 import io.reactivex.rxjava3.core.Observable
@@ -51,7 +52,7 @@ class LoginUseCaseTest {
     }
 
     @Test
-    fun `로그인 실패 테스트 - 비밀번호 실패`() {
+    fun `로그인 실패 테스트 - 잘못된 이메일`() {
         // Given
         val dummyEmail = "dummy@gmail.com"
         val dummyPassword = "password"
@@ -68,5 +69,27 @@ class LoginUseCaseTest {
             .test()
             .assertNoErrors()
             .assertValue { result -> result is LoginResult.FAILURE }
+            .assertValue { result -> (result as LoginResult.FAILURE).error == LoginError.INVALID_EMAIL }
+    }
+
+    @Test
+    fun `로그인 실패 테스트 - 잘못된 패스워드`() {
+        // Given
+        val dummyEmail = "dummy@gmail.com"
+        val dummyPassword = "password"
+        val dummyAccessToken = "access_token"
+        val dummyRefreshToken = "refresh_token"
+        val dummyLoginResult = LoginResult.FAILURE(LoginError.INVALID_PASSWORD)
+
+        // When
+        `when`(authRepository.login(anyString(), anyString())).thenReturn(Observable.just(dummyLoginResult))
+
+        // Then
+        val params = LoginUseCase.Params(email = dummyEmail, password = dummyPassword)
+        loginUseCase.execute(params)
+            .test()
+            .assertNoErrors()
+            .assertValue { result -> result is LoginResult.FAILURE }
+            .assertValue { result -> (result as LoginResult.FAILURE).error == LoginError.INVALID_PASSWORD }
     }
 }
