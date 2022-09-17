@@ -1,2 +1,51 @@
-# samples-android
-Android sample projects
+# Android 샘플 프로젝트
+Android 관련 샘플 프로젝트입니다.
+- `001_activity`: Activity, Intent, Lifecycle 샘플 프로젝트입니다.
+- `002_fragment`: Fragment 샘플 프로젝트입니다.
+- `003_lifecycle_aware_component`: LifecycleAwareComponent 프로젝트입니다.
+- `004_ui`: Android UI 관련 프로젝트입니다.
+    - `001_toast`: Toast 예제
+    - `002_snackbar`: Snackbar 예제
+    - `003_alertdialog`: AlertDialog 예제
+    - `010_checkbox_radiobutton`: Checkbox, RadioButton 예제
+    - `015_scrollview_recyclerview_gridview`: ScrollView, RecyclerView, GridView 예제
+    - `016_recyclerview_multiple_selection`: RecyclerView 다중 선택 예제
+    - `020_theme_and_style`: Style, Theme 예제
+    - `021_dark_mode`: 다크 모드 예제
+    - `025_layout_inspector`: Layout Inspector 예제
+    - `030_reuse_layout`: Layout 재사용 예제
+    - `031_compound_view`: CompoundView 예제
+    - `032_custom_view`: CustomView 예제
+    - `033_canvas_paint`: Canvas, Paint 예제
+- `005_service`: StartService, IntentService, LocalBoundService, RemoteBoundService 샘플
+- `006_content_provider`: ContentProvider, ContentReceiver 샘플
+- `007_thread`: 안드로이드 멀티 스레드 예제
+- `010_jetpack`
+    - `001_acc`: ViewModel, ViewBinding, DataBinding, LiveData 샘플
+    - `002_navigation`: Navigation Component 샘플
+    - `003_compose`: Jetpack Compose 예제
+- `015_coroutine`: Coroutine 샘플
+- `020_di`
+    - `01_koin`: Koin 의존성 주입 예제
+    - `02_dagger`: Dagger 2 의존성 주입 예제
+    - `03_hilt`: Hilt 의존성 주입 예제
+- `021_gradle_multi_modules`: Gradle 멀티 모듈 예제
+- `022_architecture_pattern`
+    - `001_mvc`: MVC 예제
+    - `002_mvp`: MVP 예제
+    - `003_mvvm`: MVVM 예제
+- `025_internalization`: 다국어 지원 예제
+- `030_sqlite`: SQLite 예제
+- `031_room`: Room 예제
+- `040_build_type`: BuildType 예제
+- `041_product_flavor` ProductFlavor 예제
+- `042_shared_preference`: SharedPreference 샘플
+- `043_permission`: 권한 관리 샘플
+- `045_notification`: 로컬 알람, 원격 알람 푸시 예제
+- `047_app_release`: 구글 플레이스토어 앱 출시 예제
+- `051_payment`: 인앱 결제, PG 결제샘플
+- `053_camera_gallery`: 카메라, 갤러리 샘플
+- `054_google_admob`: Google AdMob 샘플
+- `055_google_maps`: Google Maps 예제
+- `057_socket`: Socket 통신 예제
+- `058_mediaplayer`: MediaPlayer 예제
